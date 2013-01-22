@@ -1,0 +1,65 @@
+{% extends 'wbriksBackendBundle:Default:template.html.twig' %}
+{% block title %}GDP per capita indicator data{% endblock %}
+
+{% block inline_scripts %}
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#gdp-data').dataTable({
+                "sDom": 'Wlfriptip',
+                oColumnFilterWidgets: {
+                    aiExclude: [ 2 ],
+                    bGroupTerms: true
+
+
+                }
+            });
+        });
+    </script>
+{% endblock %}
+
+{% block menu_left %}
+    {{ parent() }}
+{% endblock %}
+{% block main_content %}
+
+    <div class="gdp indicator list">
+        <h2>GDP per capita in current US $</h2>
+        <p>
+            <a class="ajax-link" href="{{ path('wbriks_gdp_capita_indicator_map') }}">View on map</a>
+        </p>
+
+        <div>
+            <table id="gdp-data" class="display dataTable">
+                <thead>
+                <tr>
+                    <th>Country</th>
+                    <th>Year</th>
+                    <th>GDP in current US$</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                {% if entities is not empty %}
+
+                    {% for key, entity in entities %}
+                        <tr>
+                            <td>
+                                {{ entity.name }}
+                            </td>
+                            <td align="center">
+                                {{ entity.year }}
+                            </td>
+                            <td align="right">
+                                {{ entity.value | number_format }}
+                            </td>
+                        </tr>
+                    {% endfor %}
+
+                {% else %}
+                    <p>Résultat vide</p>
+                {% endif %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

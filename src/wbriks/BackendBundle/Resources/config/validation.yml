@@ -1,0 +1,10 @@
+wbriks\BackendBundle\Entity\Country:
+    properties:
+        name:
+            - NotBlank: ~
+        region_name:
+            - NotBlank: ~
+        capital_city:
+            - NotBlank: ~
+        iso_2_alpha_code:
+            - NotBlank: ~

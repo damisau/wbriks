@@ -1,0 +1,24 @@
+{
+"cols": [
+{"id":"","label":"Country","pattern":"","type":"string"},
+{"id":"","label":"GDP per Capita","pattern":"","type":"number"}
+],
+"rows":
+[
+{% for key, entity in entities %}
+    {% if loop.last %}
+        {% if entity.value is null %}
+            {"c":[{"v":"{{ entity.name }}","f":null},{"v":0,"f":null}]}
+        {% else %}
+            {"c":[{"v":"{{ entity.name }}","f":null},{"v":{{ entity.value }},"f":null}]}
+        {% endif %}
+    {% else %}
+        {% if entity.value is null %}
+            {"c":[{"v":"{{ entity.name }}","f":null},{"v":0,"f":null}]},
+        {% else %}
+            {"c":[{"v":"{{ entity.name }}","f":null},{"v":{{ entity.value }},"f":null}]},
+        {% endif %}
+    {% endif %}
+{% endfor %}
+]
+}

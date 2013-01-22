@@ -1,0 +1,41 @@
+{% extends 'wbriksBackendBundle:Default:template.html.twig' %}
+{% block title %}The arrangements in the RIKS platform{% endblock %}
+{% block menu_left %}
+{{ parent() }}
+{% endblock %}
+{% block main_content %}
+	<h2>Edit the arrangement:</h2>
+	<form action="{{ path('wbriks_arrangement_update') }}" method="post" {{ form_enctype(form) }}>
+	{{ form_label(form.name) }}
+	{{ form_errors(form.name) }}
+    {{ form_widget(form.name) }}
+
+    {{ form_label(form.id) }}
+	{{ form_errors(form.id) }}
+    {{ form_widget(form.id) }}
+
+    {{ form_widget(form._token) }}
+    <table width="100%">
+    {% for country in form.countries %}
+		{% if loop.index == 1 %}
+    		<tr>
+    			<td>
+    			{{ form_widget(country) }} {{ form_label(country) }}
+    			</td>
+		{% endif %}	
+    	{% if (loop.index is divisibleby(3)) and (loop.index != 1) %}
+    		</tr>
+    		<tr>
+    			<td>
+    			{{ form_widget(country) }} {{ form_label(country) }}
+    			</td>
+		{% else %}
+    			<td>
+    				{{ form_widget(country) }} {{ form_label(country) }}
+    			</td>
+		{% endif %}
+    {%  endfor %}
+	</table>
+	<input type="submit" />
+</form>
+{% endblock %}

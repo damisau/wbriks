@@ -1,0 +1,21 @@
+{% extends 'wbriksBackendBundle:Default:template.html.twig' %}
+{% block title %}The arrangements in the RIKS platform{% endblock %}
+{% block inline_scripts %}
+    {{ parent() }}
+    <script type="text/javascript">
+    $(document).ready(function(){
+        $('#form_countries').chosen();
+    });
+    </script>
+{% endblock %}
+
+{% block menu_left %}
+  {{ parent() }}
+{% endblock %}
+{% block main_content %}
+	<h2>Enter the data for the new arrangement:</h2>
+	<form action="{{ path('wbriks_arrangement_create') }}" method="post" {{ form_enctype(form) }}>
+    {{ form_widget(form) }}
+	<input type="submit" />
+</form>
+{% endblock %}

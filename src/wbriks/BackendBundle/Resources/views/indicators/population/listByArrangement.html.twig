@@ -1,0 +1,69 @@
+{% extends 'wbriksBackendBundle:Default:template.html.twig' %}
+{% block title %}Population data{% endblock %}
+
+{% block inline_scripts %}
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#population-data').dataTable({
+                "sDom": 'Wlfriptip',
+                oColumnFilterWidgets: {
+                    aiExclude: [ 2 ],
+                    bGroupTerms: true
+
+
+                }
+            });
+        });
+    </script>
+{% endblock %}
+
+{% block menu_left %}
+    {{ parent() }}
+{% endblock %}
+{% block main_content %}
+
+    <div class="population indicator list">
+        <h2>Population</h2>
+        <p>
+            <a href="{{ path('wbriks_population_indicator_map') }}">View on map</a>
+        </p>
+
+        <div>
+            <table id="population-data" class="display dataTable">
+                <thead>
+                <tr>
+                    <th>Arrangement</th>
+                    <th>Year</th>
+                    <th>Population</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                {% if entities is not empty %}
+
+                    {% for key, entity in entities %}
+                        <tr>
+                            <td>
+                                {{ entity.name }}
+                            </td>
+                            <td align="center">
+                               {#
+                                    {{ entity.year }}
+                                #}
+                            </td>
+                            <td align="right">
+                                {#
+                                    {{ entity.value | number_format }}
+                                #}
+                            </td>
+                        </tr>
+                    {% endfor %}
+
+                {% else %}
+                    <p>Résultat vide</p>
+                {% endif %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

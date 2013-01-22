@@ -1,0 +1,131 @@
+wbriks_backend_homepage:
+    pattern:  /hello/{name}
+    defaults: { _controller: wbriksBackendBundle:Default:index }
+wbriks_backend_template:
+    pattern:  /template
+    defaults:  { _controller: wbriksBackendBundle:Default:showTemplate }
+wbriks_countries_list:
+    pattern:  /countries/list
+    defaults: { _controller: wbriksBackendBundle:Country:listCountries }
+wbriks_countries_update:
+    pattern:  /countries/update
+    defaults: { _controller: wbriksBackendBundle:Country:updateCountries }
+wbriks_country_create:
+    pattern:  /country/create
+    defaults:  { _controller: wbriksBackendBundle:Country:create }
+wbriks_country_edit:
+    pattern:  /country/edit/{id}
+    defaults:  { _controller: wbriksBackendBundle:Country:edit }
+wbriks_country_update:
+    pattern:  /country/update/
+    defaults:  { _controller: wbriksBackendBundle:Country:update }
+wbriks_country_delete:
+    pattern:  /country/delete/{country_id}
+    defaults:  { _controller: wbriksBackendBundle:Country:delete }
+wbriks_country_do_delete:
+    pattern:  /country/doDelete
+    defaults:  { _controller: wbriksBackendBundle:Country:doDelete }
+
+wbriks_arrangement_create:
+    pattern: /arrangement/create
+    defaults:  { _controller: wbriksBackendBundle:Arrangement:create }
+wbriks_arrangement_edit:
+    pattern: /arrangement/edit/{id}
+    defaults:  { _controller: wbriksBackendBundle:Arrangement:edit }
+wbriks_arrangement_delete:
+    pattern: /arrangement/delete/{id}
+    defaults:  { _controller: wbriksBackendBundle:Arrangement:delete }
+wbriks_arrangement_update:
+    pattern:  /arrangement/update/
+    defaults:  { _controller: wbriksBackendBundle:Arrangement:update }
+wbriks_arrangements_list:
+    pattern: /arrangements/list
+    defaults:  { _controller: wbriksBackendBundle:Arrangement:list }
+
+wbriks_gdp_indicator_renew:
+    pattern: /indicators/gdp/renew/{startYear}-{endYear}
+    defaults: { _controller: wbriksBackendBundle:GDPIndicator:renew }
+wbriks_indicator_gdp_country_list:
+    pattern: /indicators/gdp/list
+    defaults: { _controller: wbriksBackendBundle:GDPIndicator:list }
+wbriks_gdp_indicator_show:
+    pattern: /indicators/gdp/show/{id}
+    defaults: { _controller: wbriksBackendBundle:GDPIndicator:list }
+wbriks_gdp_indicator_map:
+    pattern: /indicators/gdp/map
+    defaults: { _controller: wbriksBackendBundle:GDPIndicator:map }
+wbriks_gdp_indicator_json:
+    pattern: /indicators/gdp/json/{year}
+    defaults: { _controller: wbriksBackendBundle:GDPIndicator:getJSONOfYear, year:1970, _format:json }
+
+
+wbriks_gdp_capita_indicator_renew:
+    pattern: /indicators/gdp-capita/renew/{startYear}-{endYear}
+    defaults: { _controller: wbriksBackendBundle:GDPPerCapita:renew }
+wbriks_indicator_gdp_capita_country_list:
+    pattern: /indicators/gdp-capita/list
+    defaults: { _controller: wbriksBackendBundle:GDPPerCapita:list }
+wbriks_gdp_capita_indicator_show:
+    pattern: /indicators/gdp-capita/show/{id}
+    defaults: { _controller: wbriksBackendBundle:GDPPerCapita:list }
+wbriks_gdp_capita_indicator_map:
+    pattern: /indicators/gdp-capita/map
+    defaults: { _controller: wbriksBackendBundle:GDPPerCapita:map }
+wbriks_gdp_capita_indicator_json:
+    pattern: /indicators/gdp-capita/json/{year}
+    defaults: { _controller: wbriksBackendBundle:GDPPerCapita:getJSONOfYear, year:1970, _format:json }
+
+
+wbriks_gni_indicator_renew:
+  pattern: /indicators/gni/renew/{startYear}-{endYear}
+  defaults: { _controller: wbriksBackendBundle:GNIIndicator:renew }
+wbriks_indicator_gni_country_list:
+  pattern: /indicators/gni/list
+  defaults: { _controller: wbriksBackendBundle:GNIIndicator:list }
+wbriks_gni_indicator_show:
+  pattern: /indicators/gni/show/{id}
+  defaults: { _controller: wbriksBackendBundle:GNIIndicator:list }
+wbriks_gni_indicator_map:
+  pattern: /indicators/gni/map
+  defaults: { _controller: wbriksBackendBundle:GNIIndicator:map }
+wbriks_gni_indicator_json:
+  pattern: /indicators/gni/json/{year}
+  defaults: { _controller: wbriksBackendBundle:GNIIndicator:getJSONOfYear, year:1970, _format:json }
+
+
+wbriks_fdi_indicator_renew:
+  pattern: /indicators/fdi/renew/{startYear}-{endYear}
+  defaults: { _controller: wbriksBackendBundle:FDIIndicator:renew }
+wbriks_indicator_fdi_country_list:
+  pattern: /indicators/fdi/list
+  defaults: { _controller: wbriksBackendBundle:FDIIndicator:list }
+wbriks_fdi_indicator_show:
+  pattern: /indicators/fdi/show/{id}
+  defaults: { _controller: wbriksBackendBundle:FDIIndicator:list }
+wbriks_fdi_indicator_map:
+  pattern: /indicators/fdi/map
+  defaults: { _controller: wbriksBackendBundle:FDIIndicator:map }
+wbriks_fdi_indicator_json:
+  pattern: /indicators/fdi/json/{year}
+  defaults: { _controller: wbriksBackendBundle:FDIIndicator:getJSONOfYear, year:1970, _format:json }
+
+
+wbriks_population_indicator_renew:
+  pattern: /indicators/population/renew/{startYear}-{endYear}
+  defaults: { _controller: wbriksBackendBundle:Population:renew }
+wbriks_indicator_population_country_list:
+  pattern: /indicators/population/list
+  defaults: { _controller: wbriksBackendBundle:Population:list }
+wbriks_indicator_population_arrangement_list:
+  pattern: /indicators/population/list-by-arrangement
+  defaults: { _controller: wbriksBackendBundle:Population:listByArrangement }
+wbriks_population_indicator_show:
+  pattern: /indicators/population/show/{id}
+  defaults: { _controller: wbriksBackendBundle:Population:list }
+wbriks_population_indicator_map:
+  pattern: /indicators/population/map
+  defaults: { _controller: wbriksBackendBundle:Population:map }
+wbriks_population_indicator_json:
+  pattern: /indicators/population/json/{year}
+  defaults: { _controller: wbriksBackendBundle:Population:getJSONOfYear, year:1970, _format:json }
+

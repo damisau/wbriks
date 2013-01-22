@@ -1,0 +1,61 @@
+{% extends 'wbriksBackendBundle:Default:template.html.twig' %}
+{% block title %}FDI data{% endblock %}
+
+{% block inline_scripts %}
+    <script type='text/javascript' src='https://www.google.com/jsapi'></script>
+
+    <script type="text/javascript">
+        google.load('visualization', '1', {'packages': ['geochart']});
+        google.setOnLoadCallback(function(){
+            drawRegionsMap(1970)
+        });
+
+        function drawRegionsMap(yearToDisplay) {
+
+            var jsonData = $.ajax({
+                url: "/wbriks/web/app_dev.php/indicators/fdi/json/" + yearToDisplay,
+                dataType:"json",
+                async: false
+            }).responseText;
+
+            var data = new google.visualization.DataTable(jsonData);
+
+            var options = {};
+
+            var chart = new google.visualization.GeoChart(document.getElementById('chart_div'));
+            var zoomedIn = false;
+            google.visualization.events.addListener(chart, 'regionClick', function (eventData) {
+                if(zoomedIn){
+                    console.log("zoomedIn, trying out");
+                    zoomedIn = false;
+                    chart.draw(data, options);
+                }   else{
+                    var inOptions = Array();
+                    inOptions['region'] = eventData.region;
+                    inOptions['showZoomOut'] = true;
+                    inOptions['zoomOutLabel'] = 'zoom';
+                    zoomedIn = true;
+                    chart.draw(data, inOptions);
+                }
+            });
+            chart.draw(data, options);
+        };
+    </script>
+{% endblock %}
+
+{% block menu_left %}
+    {{ parent() }}
+{% endblock %}
+{% block main_content %}
+
+    <div class="fdi indicator list">
+        <h2>FDI data</h2>
+        <p>
+            <a class="ajax-link" href="{{ path('wbriks_fdi_indicator_list') }}">View as table</a>
+        </p>
+        {% include 'wbriksBackendBundle:indicators:yearMenuForMap.html.twig' %}
+
+        <div id="chart_div">
+        </div>
+    </div>
+{% endblock %}

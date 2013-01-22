@@ -1,0 +1,17 @@
+parameters:
+    database_driver: pdo_mysql
+    database_host: localhost
+    database_port: null
+    database_name: wbriks
+    database_user: www
+    database_password: www
+    mailer_transport: smtp
+    mailer_host: localhost
+    mailer_user: null
+    mailer_password: null
+    locale: en
+    secret: ece0b845e0da6d471d7e0df70d08d682cabec20e
+    database_path: null
+    max_indicators_on_listpage: 30
+    population_from_year: 1970
+    population_until_year: 2010

@@ -1,0 +1,20 @@
+{% extends 'wbriksBackendBundle:arrangements:arrangementsList.html.twig' %}
+{% block title %}The arrangements in the RIKS platform{% endblock %}
+{% block main_content %}
+	<div class="span12">
+		<h1>Confirm delete action</h1>
+		<p>
+			Are your sure that you would like to delete {{ arrangement.name }}?<br />
+			This action cannot be undone!
+			
+		</p>
+		<p>
+			<form method="post" action="{{ path('wbriks_arrangement_delete', {'id': arrangement.id}) }}">
+				<input type="hidden" name="id" value="{{ arrangement.id }}">
+				<button type="submit" class="btn btn-large btn-danger">Yes, delete</button>
+				<button class="btn btn-large">No, cancel</button>
+			</form>
+		</p>
+	</div>	
+   
+{% endblock %}

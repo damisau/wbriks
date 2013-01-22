@@ -1,0 +1,20 @@
+{% extends 'wbriksBackendBundle:countries:countriesList.html.twig' %}
+{% block title %}The countries in the RIKS platform{% endblock %}
+{% block main_content %}
+	<div class="span12">
+		<h1>Confirm delete action</h1>
+		<p>
+			Are your sure that you would like to delete {{ country.name }}?<br />
+			This action cannot be undone!
+			
+		</p>
+		<p>
+			<form method="post" action="{{ path('wbriks_country_do_delete') }}">
+				<input type="hidden" name="country_id" value="{{ country.id }}">
+				<button type="submit" class="btn btn-large btn-danger">Yes, delete</button>
+				<button class="btn btn-large">No, cancel</button>
+			</form>
+		</p>
+	</div>	
+   
+{% endblock %}

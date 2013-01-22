@@ -1,0 +1,13 @@
+{% extends 'wbriksBackendBundle:Default:template.html.twig' %}
+{% block title %}The countries in the RIKS platform{% endblock %}
+{% block menu_left %}
+{{ parent() }}
+{% endblock %}
+{% block main_content %}
+
+    <h2>You are editing the data stored for {{ form.vars.value.name }}</h2>
+    <form action="{{ path('wbriks_country_update') }}" method="post" {{ form_enctype(form) }}>
+        {{ form_widget(form) }}
+        <input type="submit" value="save changes" />
+    </form>
+{% endblock %}

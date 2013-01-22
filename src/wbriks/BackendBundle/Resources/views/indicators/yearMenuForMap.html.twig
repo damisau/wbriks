@@ -1,0 +1,7 @@
+<form method="" action="" onchange="">
+    <select name="yearChange" onchange="drawRegionsMap(this.value)">
+        {% for i in range(1970, 2010) %}
+            <option value="{{ i }}">{{ i }}</option>
+        {% endfor %}
+    </select>
+</form>
