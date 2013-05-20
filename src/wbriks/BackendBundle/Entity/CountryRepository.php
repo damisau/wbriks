@@ -18,6 +18,12 @@ class CountryRepository extends EntityRepository
             ->getResult();
     }
 
+    public function findOneById($id){
+        return $this->getEntityManager()
+            ->createQuery('SELECT p FROM wbriksBackendBundle:Country p WHERE p.iso_2_alpha_code = \''.$id.'\'')
+            ->getResult();
+    }
+
 
     /**
      * @param $id

@@ -49,7 +49,8 @@
 						<li><a class="ajax-link" href="typography.html"><i class="icon-font"></i><span class="hidden-tablet"> Typography</span></a></li>
 						<li><a class="ajax-link" href="gallery.html"><i class="icon-picture"></i><span class="hidden-tablet"> Gallery</span></a></li>
                         -->
-                        <li class="nav-header hidden-tablet">Country - Level Indicators</li>
+                        <li class="nav-header hidden-tablet group-header">Country - Level Indicators</li>
+
                         <li><a class="ajax-link" href="{{ path('wbriks_indicator_population_country_list') }}">
                             <i class="icon-align-justify"></i><span class="hidden-tablet"> Population</span></a>
                         </li>
@@ -66,32 +67,25 @@
                             <i class="icon-align-justify"></i><span class="hidden-tablet"> FDI, current US$</span></a>
                         </li>
 
-                        <li class="nav-header hidden-tablet">Arrangement - Level Indicators</li>
+                        <li class="nav-header hidden-tablet group-header">Arrangement - Level Indicators</li>
+
                         <li><a class="ajax-link" href="{{ path('wbriks_indicator_population_arrangement_list') }}">
                             <i class="icon-align-justify"></i><span class="hidden-tablet">Population</span></a>
                         </li>
-                        <li><a class="ajax-link" href="{{ path('wbriks_indicator_gdp_country_list') }}">
+                        <li><a class="ajax-link" href="{{ path('wbriks_indicator_gdp_arrangement_list') }}">
                             <i class="icon-align-justify"></i><span class="hidden-tablet"> GDP, current US$</span></a>
                         </li>
-                        <li><a class="ajax-link" href="{{ path('wbriks_indicator_gdp_capita_country_list') }}">
+                        <li><a class="ajax-link" href="{{ path('wbriks_indicator_gdp_capita_arrangement_list') }}">
                             <i class="icon-align-justify"></i><span class="hidden-tablet"> GDP per capita, current US$</span></a>
                         </li>
-                        <li><a class="ajax-link" href="{{ path('wbriks_indicator_gni_country_list') }}">
+                        <li><a class="ajax-link" href="{{ path('wbriks_indicator_gni_arrangement_list') }}">
                             <i class="icon-align-justify"></i><span class="hidden-tablet"> GNI, current US$</span></a>
                         </li>
-                        <li><a class="ajax-link" href="{{ path('wbriks_indicator_fdi_country_list') }}">
+                        <li><a class="ajax-link" href="{{ path('wbriks_indicator_fdi_arrangement_list') }}">
                             <i class="icon-align-justify"></i><span class="hidden-tablet"> FDI, current US$</span></a>
                         </li>
 
-                        <li class="nav-header hidden-tablet">Misc</li>
-						<li><a class="ajax-link" href="table.html"><i class="icon-align-justify"></i><span class="hidden-tablet"> Tables</span></a></li>
-						<li><a class="ajax-link" href="calendar.html"><i class="icon-calendar"></i><span class="hidden-tablet"> Calendar</span></a></li>
-						<li><a class="ajax-link" href="grid.html"><i class="icon-th"></i><span class="hidden-tablet"> Grid</span></a></li>
-						<li><a class="ajax-link" href="file-manager.html"><i class="icon-folder-open"></i><span class="hidden-tablet"> File Manager</span></a></li>
-						<li><a href="tour.html"><i class="icon-globe"></i><span class="hidden-tablet"> Tour</span></a></li>
-						<li><a class="ajax-link" href="icon.html"><i class="icon-star"></i><span class="hidden-tablet"> Icons</span></a></li>
-						<li><a href="error.html"><i class="icon-ban-circle"></i><span class="hidden-tablet"> Error Page</span></a></li>
-						<li><a href="login.html"><i class="icon-lock"></i><span class="hidden-tablet"> Login Page</span></a></li>
+
 					</ul>
 					{% endblock %}
 				</div><!--/.well -->
@@ -111,7 +105,7 @@
 					{% block breadcrumb %}
 					<ul class="breadcrumb">
 						<li>
-							<a href="#">Home</a> <span class="divider">/</span>
+							<a href="http://localhost/wbriks/web/app_dev.php">Home</a> <span class="divider">/</span>
 						</li>
 						<li>
 							<a href="#">Dashboard</a>
@@ -120,15 +114,16 @@
 					{% endblock %}
 				</div>
 				{% block main_content %}
+                    <img src="images/riks_logo.jpg" />
 				{% endblock %}		
 			</div><!--/#content.span10-->
 		</div><!--/fluid-row-->
-				
+
 		<hr>
 
 		<footer>
 			{% block footer %}
-			<p class="pull-left">&copy; <a href="http://www.cris.unu.edu/riks" target="_blank">CRIS RIKS platform</a> 2012</p>
+			<p class="pull-left">&copy; <a href="http://www.cris.unu.edu/riks" target="_blank">CRIS RIKS platform</a> 2013</p>
 			{% endblock %}
 		</footer>
 		
@@ -161,6 +156,7 @@
     '@wbriksBackendBundle/Resources/public/js/excanvas.js'
     '@wbriksBackendBundle/Resources/public/js/jquery.flot.min.js'
     '@wbriksBackendBundle/Resources/public/js/chosen.jquery.min.js'
+    '@wbriksBackendBundle/Resources/public/js/riks.js'
     '@wbriksBackendBundle/Resources/public/js/bootstrap-scrollspy.js' %}
     <script src="{{ asset_url }}"></script>
 	{% endjavascripts %}

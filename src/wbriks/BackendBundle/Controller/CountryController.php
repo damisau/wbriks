@@ -6,10 +6,16 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 
+
+
 use wbriks\BackendBundle\Entity\Country;
 
 class CountryController extends Controller
 {
+    /**
+     * @param \Symfony\Component\HttpFoundation\Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     */
     public function createAction(Request $request) {
         $country = new Country();
         $form = $this->createFormBuilder($country)
@@ -32,6 +38,12 @@ class CountryController extends Controller
         return $this->render('wbriksBackendBundle:countries:newCountry.html.twig', array('form' => $form->createView()));
     }
 
+
+    /**
+     * @param \Symfony\Component\HttpFoundation\Request $request
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     */
     public function editAction(Request $request, $id) {
         $em = $this->getDoctrine()->getEntityManager();
         $country = $em->getRepository('wbriksBackendBundle:Country')->findOneByISO2AlphaCode($id);
@@ -57,6 +69,10 @@ class CountryController extends Controller
         return $this->render('wbriksBackendBundle:countries:editCountry.html.twig', array('form' => $form->createView()));
     }
 
+    /**
+     * @param \Symfony\Component\HttpFoundation\Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
     public function updateAction(Request $request) {
         $data = $request->request->all();
         $countryName = $data['form']['id'];
@@ -82,6 +98,13 @@ class CountryController extends Controller
         }
     }
 
+
+    /**
+     * @param int $country_id
+     * @param \Symfony\Component\HttpFoundation\Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
+     */
     public function deleteAction($country_id = 0, Request $request = null) {
         $country = $this->getDoctrine()->getRepository('wbriksBackendBundle:Country')->find($country_id);
         if (!$country) {
@@ -90,26 +113,38 @@ class CountryController extends Controller
         return $this->render('wbriksBackendBundle:countries:countryDelete.html.twig', array("country" => $country));
     }
 
+
+    /**
+     * @param \Symfony\Component\HttpFoundation\Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
     public function doDeleteAction(Request $request) {
         $data = $request->request->all();
         $countryId = $data['country_id'];
-        $em = $this->getDoctrine()->getEntityManager();
+        $em = $this->getDoctrine()->getManager();
         $country = $em->getRepository('wbriksBackendBundle:Country')->findOneById($countryId);
-        $em->remove($country);
+        $em->remove($country[0]);
         $em->flush();
         $this->get('session')->getFlashBag()->add('notice', 'The country has been deleted!');
         return $this->redirect($this->generateUrl('wbriks_countries_list'));
     }
 
 
+    /**
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function listCountriesAction() {
         //$repository = $this->getDoctrine()->getRepository('wbriksBackendBundle:Country');
         //$countries = $repository->findAll();
-        $em = $this->getDoctrine()->getEntityManager();
+        $em = $this->getDoctrine()->getManager();
         $countries = $em->getRepository('wbriksBackendBundle:Country')->findAllOrderedByName();
         return $this->render('wbriksBackendBundle:countries:countriesList.html.twig', array("countries" => $countries));
     }
 
+
+    /**
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function updateCountriesAction() {
         $url = "http://api.worldbank.org/country?per_page=5000&region=WLD&format=json";
         $ch = curl_init($url);
@@ -128,8 +163,14 @@ class CountryController extends Controller
             $countryDAO->setLongitude($country['longitude']);
             $countryDAO->setLatitude($country['latitude']);
 
-            $em->persist($countryDAO);
-            $em->flush();
+            $presentCountry = $em->getRepository('wbriksBackendBundle:Country')->findOneByISO2AlphaCode($country['iso2Code']);
+
+            if(is_array($presentCountry) && count($presentCountry) >= 1){
+                $logger = $this->get('logger');
+            } else{
+                $em->persist($countryDAO);
+                $em->flush();
+            }
         }
         $countries = $em->getRepository('wbriksBackendBundle:Country')->findAllOrderedByName();
         return $this->render('wbriksBackendBundle:countries:countriesList.html.twig', array("countries" => $countries));

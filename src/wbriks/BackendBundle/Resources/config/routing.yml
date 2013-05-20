@@ -57,6 +57,10 @@ wbriks_gdp_indicator_map:
 wbriks_gdp_indicator_json:
     pattern: /indicators/gdp/json/{year}
     defaults: { _controller: wbriksBackendBundle:GDPIndicator:getJSONOfYear, year:1970, _format:json }
+wbriks_indicator_gdp_arrangement_list:
+    pattern: /indicators/gdp/list-by-arrangement
+    defaults: { _controller: wbriksBackendBundle:GDPIndicator:listByArrangement }
+
 
 
 wbriks_gdp_capita_indicator_renew:
@@ -74,6 +78,10 @@ wbriks_gdp_capita_indicator_map:
 wbriks_gdp_capita_indicator_json:
     pattern: /indicators/gdp-capita/json/{year}
     defaults: { _controller: wbriksBackendBundle:GDPPerCapita:getJSONOfYear, year:1970, _format:json }
+wbriks_indicator_gdp_capita_arrangement_list:
+    pattern: /indicators/gdp-capita/list-by-arrangement
+    defaults: { _controller: wbriksBackendBundle:GDPPerCapita:listByArrangement }
+
 
 
 wbriks_gni_indicator_renew:
@@ -91,6 +99,9 @@ wbriks_gni_indicator_map:
 wbriks_gni_indicator_json:
   pattern: /indicators/gni/json/{year}
   defaults: { _controller: wbriksBackendBundle:GNIIndicator:getJSONOfYear, year:1970, _format:json }
+wbriks_indicator_gni_arrangement_list:
+    pattern: /indicators/gni/list-by-arrangement
+    defaults: { _controller: wbriksBackendBundle:GNIIndicator:listByArrangement }
 
 
 wbriks_fdi_indicator_renew:
@@ -108,6 +119,10 @@ wbriks_fdi_indicator_map:
 wbriks_fdi_indicator_json:
   pattern: /indicators/fdi/json/{year}
   defaults: { _controller: wbriksBackendBundle:FDIIndicator:getJSONOfYear, year:1970, _format:json }
+wbriks_indicator_fdi_arrangement_list:
+  pattern: /indicators/fdi/list-by-arrangement
+  defaults: { _controller: wbriksBackendBundle:FDIIndicator:listByArrangement }
+
 
 
 wbriks_population_indicator_renew:

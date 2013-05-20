@@ -41,7 +41,6 @@ html {
 
 a:focus {
   outline: thin dotted #333;
-  outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
 
@@ -446,7 +445,6 @@ h6 {
   font-family: inherit;
   font-weight: bold;
   color: inherit;
-  text-rendering: optimizelegibility;
 }
 
 h1 small,
@@ -697,7 +695,6 @@ pre {
   word-break: break-all;
   word-wrap: break-word;
   white-space: pre;
-  white-space: pre-wrap;
   background-color: #f5f5f5;
   border: 1px solid #ccc;
   border: 1px solid rgba(0, 0, 0, 0.15);
@@ -912,7 +909,6 @@ input[type="file"]:focus,
 input[type="radio"]:focus,
 input[type="checkbox"]:focus {
   outline: thin dotted #333;
-  outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
 
@@ -1561,7 +1557,6 @@ table {
 .table-bordered {
   border: 1px solid #dddddd;
   border-collapse: separate;
-  *border-collapse: collapsed;
   border-left: 0;
   -webkit-border-radius: 4px;
      -moz-border-radius: 4px;
@@ -1778,9 +1773,7 @@ table .span24 {
   *margin-right: .3em;
   line-height: 14px;
   vertical-align: text-top;
-  background-image: url("http://localhost/wbriks/web/img/glyphicons-halflings.png");
-  background-position: 14px 14px;
-  background-repeat: no-repeat;
+  background: url("http://localhost/wbriks/web/img/glyphicons-halflings.png") no-repeat 14px 14px;
 }
 
 [class^="icon-"]:last-child,
@@ -2604,8 +2597,6 @@ button.close {
   -webkit-border-radius: 4px;
      -moz-border-radius: 4px;
           border-radius: 4px;
-  filter: progid:dximagetransform.microsoft.gradient(startColorstr='#ffffff', endColorstr='#e6e6e6', GradientType=0);
-  filter: progid:dximagetransform.microsoft.gradient(enabled=false);
   *zoom: 1;
   -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
      -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
@@ -2634,7 +2625,6 @@ button.close {
   color: #333333;
   text-decoration: none;
   background-color: #e6e6e6;
-  *background-color: #d9d9d9;
   /* Buttons in IE7 don't get borders, so darken on hover */
 
   background-position: 0 -15px;
@@ -2653,9 +2643,8 @@ button.close {
 
 .btn.active,
 .btn:active {
-  background-color: #e6e6e6;
   background-color: #d9d9d9 \9;
-  background-image: none;
+  background: #e6e6e6 none;
   outline: 0;
   -webkit-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
      -moz-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
@@ -2665,8 +2654,7 @@ button.close {
 .btn.disabled,
 .btn[disabled] {
   cursor: default;
-  background-color: #e6e6e6;
-  background-image: none;
+  background: #e6e6e6 none;
   opacity: 0.65;
   filter: alpha(opacity=65);
   -webkit-box-shadow: none;
@@ -3296,7 +3284,8 @@ input[type="submit"].btn.btn-mini {
 }
 
 .nav-tabs > li > a,
-.nav-pills > li > a {
+.nav-pills > li > a,
+.nav-tabs > div > li > a{
   padding-right: 12px;
   padding-left: 12px;
   margin-right: 2px;
@@ -3307,11 +3296,13 @@ input[type="submit"].btn.btn-mini {
   border-bottom: 1px solid #ddd;
 }
 
-.nav-tabs > li {
+.nav-tabs > li,
+.nav-tabs > div >li{
   margin-bottom: -1px;
 }
 
-.nav-tabs > li > a {
+.nav-tabs > li > a,
+.nav-tabs > div > li > a{
   padding-top: 8px;
   padding-bottom: 8px;
   line-height: 18px;
@@ -3494,7 +3485,8 @@ input[type="submit"].btn.btn-mini {
   margin-bottom: 0;
 }
 
-.tabs-below > .nav-tabs > li > a {
+.tabs-below > .nav-tabs > li > a,
+.tabs-below > .nav-tabs > div > li > a{
   -webkit-border-radius: 0 0 4px 4px;
      -moz-border-radius: 0 0 4px 4px;
           border-radius: 0 0 4px 4px;
@@ -3854,8 +3846,6 @@ input[type="submit"].btn.btn-mini {
   background-repeat: repeat-x;
   border-color: #222222 #222222 #000000;
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-  filter: progid:dximagetransform.microsoft.gradient(startColorstr='#333333', endColorstr='#222222', GradientType=0);
-  filter: progid:dximagetransform.microsoft.gradient(enabled=false);
   -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(255, 255, 255, 0.075);
      -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(255, 255, 255, 0.075);
           box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(255, 255, 255, 0.075);

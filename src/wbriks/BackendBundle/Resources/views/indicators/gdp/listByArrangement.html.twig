@@ -1,10 +1,10 @@
 {% extends 'wbriksBackendBundle:Default:template.html.twig' %}
-{% block title %}Population data{% endblock %}
+{% block title %}GDP data{% endblock %}
 
 {% block inline_scripts %}
     <script type="text/javascript">
         $(document).ready(function () {
-            $('#population-data').dataTable({
+            $('#gdp-data').dataTable({
                 "sDom": 'Wlfriptip',
                 oColumnFilterWidgets: {
                     aiExclude: [ 2 ],
@@ -23,16 +23,16 @@
     <div class="population indicator list">
         <h2>Population</h2>
         <p>
-            <a href="{{ path('wbriks_population_indicator_map') }}">View on map</a>
+            <a href="{{ path('wbriks_gdp_indicator_map') }}">View on map</a>
         </p>
 
         <div>
-            <table id="population-data" class="display dataTable">
+            <table id="gdp-data" class="display dataTable">
                 <thead>
                 <tr>
                     <th>Arrangement</th>
                     <th>Year</th>
-                    <th>Population</th>
+                    <th>GDP</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -41,8 +41,8 @@
                         {% for year, value in valueAry %}
                             <tr>
                                 <td>{{ name }}</td>
-                                <td>{{ year }}</td>
-                                <td>{{ value }}</td>
+                                <td align="center">{{ year }}</td>
+                                <td align="right">{{ value | number_format }}</td>
                             </tr>
                         {% endfor %}
                     {% endfor %}

@@ -82,6 +82,44 @@ class FDIIndicatorController extends Controller
         ));
     }
 
+    /**
+     * List population values by arrangement
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function listByArrangementAction(){
+        $startYear = $this->container->getParameter('population_from_year');
+        $endYear = $this->container->getParameter('population_until_year');
+        $arrangements = $this->getDoctrine()->getRepository('wbriksBackendBundle:Arrangement')
+            ->createQueryBuilder('a')
+            ->getQuery()
+            ->getResult();
+        $indicatorValues = array();
+        $conn = $this->container->get('database_connection');
+
+        foreach($arrangements as $arrangement){
+            $sql = "SELECT a.id, a.name as arrangement_name, ac.country_id, c.name, fdi.value, fdi.year, sum(fdi.value) as fdi
+                FROM arrangement as a
+                JOIN arrangements_countries ac ON (ac.arrangement_id = a.`id`)
+                JOIN country as c on (c.iso_2_alpha_code = ac.country_id)
+                JOIN indicator_fdi as fdi on (fdi.country_id = c.iso_2_alpha_code)
+                where a.id = " . $arrangement->getId() . "
+                group by fdi.year
+                order by fdi.year desc
+                ;";
+            $stmt = $conn->query($sql);
+            while ($row = $stmt->fetch()) {
+                $indicatorValues[$row['arrangement_name']] [$row['year']] = $row['fdi'];
+            }
+        }
+
+        return $this->render('wbriksBackendBundle:indicators\fdi:listByArrangement.html.twig', array(
+            'entities' => $arrangements,
+            'startYear' => $startYear,
+            'endYear' => $endYear,
+            'indicatorValues' => $indicatorValues
+        ));
+    }
+
     public function getJSONOfYearAction($year = 1970){
         $request = $this->getRequest();
         $format = $request->getRequestFormat();

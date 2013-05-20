@@ -45,7 +45,11 @@
 			<tbody role="alert" aria-live="polite" aria-relevant="all">
 			{% for country in countries %}
 				<tr class="{{ cycle(['odd', 'even'], loop.index) }}">
-					<td class="  sorting_1">{{ country.name }}</td>
+					<td class="  sorting_1">
+                        <a href="{{ path('wbriks_country_edit', {'id': country.iso2alphacode}) }}">
+                            {{ country.name }}
+                        </a>
+                    </td>
 					<td class="center ">{{ country.iso2alphacode }}</td>
 					<td class="center ">{{ country.regionname }}</td>
 					<td class="center ">{{ country.capitalcity }}</td>

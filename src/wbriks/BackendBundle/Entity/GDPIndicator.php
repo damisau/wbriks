@@ -37,6 +37,4 @@ class GDPIndicator
     public function __construct(){
         $this->countries = new \Doctrine\Common\Collections\ArrayCollection();
     }
-
-    
 }

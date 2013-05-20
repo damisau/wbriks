@@ -1,10 +1,10 @@
 {% extends 'wbriksBackendBundle:Default:template.html.twig' %}
-{% block title %}Population data{% endblock %}
+{% block title %}GDP per capita (current US$) data{% endblock %}
 
 {% block inline_scripts %}
     <script type="text/javascript">
         $(document).ready(function () {
-            $('#population-data').dataTable({
+            $('#gdp-per-capita-data').dataTable({
                 "sDom": 'Wlfriptip',
                 oColumnFilterWidgets: {
                     aiExclude: [ 2 ],
@@ -20,19 +20,19 @@
 {% endblock %}
 {% block main_content %}
 
-    <div class="population indicator list">
-        <h2>Population</h2>
+    <div class="gdp indicator list">
+        <h2>GDP per capita, current US$</h2>
         <p>
-            <a href="{{ path('wbriks_population_indicator_map') }}">View on map</a>
+            <a href="{{ path('wbriks_gdp_capita_indicator_map') }}">View on map</a>
         </p>
 
         <div>
-            <table id="population-data" class="display dataTable">
+            <table id="gdp-per-capita-data" class="display dataTable">
                 <thead>
                 <tr>
                     <th>Arrangement</th>
                     <th>Year</th>
-                    <th>Population</th>
+                    <th>GDP per capita, current US$</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -42,7 +42,7 @@
                             <tr>
                                 <td>{{ name }}</td>
                                 <td>{{ year }}</td>
-                                <td>{{ value }}</td>
+                                <td align="right">{{ value }}</td>
                             </tr>
                         {% endfor %}
                     {% endfor %}

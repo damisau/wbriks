@@ -14,9 +14,9 @@ use wbriks\BackendBundle\Entity\Arrangement;
 class Country
 {
 
-	/**
-	 * @ORM\Column(type="string", length=3, nullable=true)
-	 */
+    /**
+     * @ORM\Column(type="string", length=3, nullable=true)
+     */
     protected $iso_3_alpha_code;
 
     /**
@@ -28,42 +28,42 @@ class Country
     /**
      * @ORM\Column(type="string", length=200)
      */
-	protected $name;
+    protected $name;
 
-	/**
-	 * @ORM\Column(type="integer", nullable=true)
-	 */
-	protected $region_id;
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    protected $region_id;
 
-	/**
+    /**
      * @ORM\Column(type="string", length=200, nullable=true)
      */
-	protected $region_name;
+    protected $region_name;
 
-	/**
-	 * @ORM\Column(type="string", length=200, nullable=true)
-	 */
-	protected $income_level;
+    /**
+     * @ORM\Column(type="string", length=200, nullable=true)
+     */
+    protected $income_level;
 
-	/**
-	 * @ORM\Column(type="string", length=200, nullable=true)
-	 */
-	protected $lending_type;
+    /**
+     * @ORM\Column(type="string", length=200, nullable=true)
+     */
+    protected $lending_type;
 
-	/**
-	 * @ORM\Column(type="string", length=200, nullable=true)
-	 */
-	protected $capital_city;
+    /**
+     * @ORM\Column(type="string", length=200, nullable=true)
+     */
+    protected $capital_city;
 
-	/**
-	 * @ORM\Column(type="string", length=200, nullable=true)
-	 */
-	protected $longitude;
+    /**
+     * @ORM\Column(type="string", length=200, nullable=true)
+     */
+    protected $longitude;
 
-	/**
-	 * @ORM\Column(type="string", length=200, nullable=true)
-	 */
-	protected $latitude;
+    /**
+     * @ORM\Column(type="string", length=200, nullable=true)
+     */
+    protected $latitude;
 
     /**
      * @ORM\Column(type="boolean")
@@ -79,7 +79,7 @@ class Country
      */
     protected $arrangements;
 
-    public function __construct(){
+    public function __construct() {
         $this->arrangements = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
@@ -89,20 +89,17 @@ class Country
      * @param string $iso3AlphaCode
      * @return Country
      */
-    public function setIso3AlphaCode($iso3AlphaCode)
-    {
+    public function setIso3AlphaCode($iso3AlphaCode) {
         $this->iso_3_alpha_code = $iso3AlphaCode;
-    
         return $this;
     }
 
     /**
      * Get iso_3_alpha_code
      *
-     * @return string 
+     * @return string
      */
-    public function getIso3AlphaCode()
-    {
+    public function getIso3AlphaCode() {
         return $this->iso_3_alpha_code;
     }
 
@@ -112,20 +109,17 @@ class Country
      * @param string $iso2AlphaCode
      * @return Country
      */
-    public function setIso2AlphaCode($iso2AlphaCode)
-    {
+    public function setIso2AlphaCode($iso2AlphaCode) {
         $this->iso_2_alpha_code = $iso2AlphaCode;
-    
         return $this;
     }
 
     /**
      * Get iso_2_alpha_code
      *
-     * @return string 
+     * @return string
      */
-    public function getIso2AlphaCode()
-    {
+    public function getIso2AlphaCode() {
         return $this->iso_2_alpha_code;
     }
 
@@ -133,7 +127,7 @@ class Country
      * Returns the unique id of this entity, which is the iso_2_alpha_code
      * @return string
      */
-    public function getId(){
+    public function getId() {
         return $this->getIso2AlphaCode();
     }
 
@@ -143,20 +137,18 @@ class Country
      * @param string $name
      * @return Country
      */
-    public function setName($name)
-    {
+    public function setName($name) {
         $this->name = $name;
-    
+
         return $this;
     }
 
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
-    public function getName()
-    {
+    public function getName() {
         return $this->name;
     }
 
@@ -166,20 +158,18 @@ class Country
      * @param integer $regionId
      * @return Country
      */
-    public function setRegionId($regionId)
-    {
+    public function setRegionId($regionId) {
         $this->region_id = $regionId;
-    
+
         return $this;
     }
 
     /**
      * Get region_id
      *
-     * @return integer 
+     * @return integer
      */
-    public function getRegionId()
-    {
+    public function getRegionId() {
         return $this->region_id;
     }
 
@@ -189,20 +179,18 @@ class Country
      * @param string $regionName
      * @return Country
      */
-    public function setRegionName($regionName)
-    {
+    public function setRegionName($regionName) {
         $this->region_name = $regionName;
-    
+
         return $this;
     }
 
     /**
      * Get region_name
      *
-     * @return string 
+     * @return string
      */
-    public function getRegionName()
-    {
+    public function getRegionName() {
         return $this->region_name;
     }
 
@@ -212,20 +200,18 @@ class Country
      * @param string $incomeLevel
      * @return Country
      */
-    public function setIncomeLevel($incomeLevel)
-    {
+    public function setIncomeLevel($incomeLevel) {
         $this->income_level = $incomeLevel;
-    
+
         return $this;
     }
 
     /**
      * Get income_level
      *
-     * @return string 
+     * @return string
      */
-    public function getIncomeLevel()
-    {
+    public function getIncomeLevel() {
         return $this->income_level;
     }
 
@@ -235,20 +221,18 @@ class Country
      * @param string $lendingType
      * @return Country
      */
-    public function setLendingType($lendingType)
-    {
+    public function setLendingType($lendingType) {
         $this->lending_type = $lendingType;
-    
+
         return $this;
     }
 
     /**
      * Get lending_type
      *
-     * @return string 
+     * @return string
      */
-    public function getLendingType()
-    {
+    public function getLendingType() {
         return $this->lending_type;
     }
 
@@ -258,20 +242,18 @@ class Country
      * @param string $capitalCity
      * @return Country
      */
-    public function setCapitalCity($capitalCity)
-    {
+    public function setCapitalCity($capitalCity) {
         $this->capital_city = $capitalCity;
-    
+
         return $this;
     }
 
     /**
      * Get capital_city
      *
-     * @return string 
+     * @return string
      */
-    public function getCapitalCity()
-    {
+    public function getCapitalCity() {
         return $this->capital_city;
     }
 
@@ -281,20 +263,18 @@ class Country
      * @param string $longitude
      * @return Country
      */
-    public function setLongitude($longitude)
-    {
+    public function setLongitude($longitude) {
         $this->longitude = $longitude;
-    
+
         return $this;
     }
 
     /**
      * Get longitude
      *
-     * @return string 
+     * @return string
      */
-    public function getLongitude()
-    {
+    public function getLongitude() {
         return $this->longitude;
     }
 
@@ -304,20 +284,18 @@ class Country
      * @param string $latitude
      * @return Country
      */
-    public function setLatitude($latitude)
-    {
+    public function setLatitude($latitude) {
         $this->latitude = $latitude;
-    
+
         return $this;
     }
 
     /**
      * Get latitude
      *
-     * @return string 
+     * @return string
      */
-    public function getLatitude()
-    {
+    public function getLatitude() {
         return $this->latitude;
     }
 
@@ -325,7 +303,7 @@ class Country
      * Get is_user_edited
      * @return boolean
      */
-    public function getIsUserEdited(){
+    public function getIsUserEdited() {
         return $this->is_user_edited;
     }
 
@@ -334,9 +312,9 @@ class Country
      * @param $is_user_edited
      * @return Country
      */
-    public function setIsUserEditet($is_user_edited){
+    public function setIsUserEditet($is_user_edited) {
         $this->is_user_edited = $is_user_edited;
-        
+
         return $this;
     }
 }
