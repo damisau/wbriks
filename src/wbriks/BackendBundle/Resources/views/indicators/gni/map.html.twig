@@ -13,7 +13,7 @@
         function drawRegionsMap(yearToDisplay) {
 
             var jsonData = $.ajax({
-                url: "/wbriks/web/app_dev.php/indicators/gni/json/" + yearToDisplay,
+                url: "/app_dev.php/indicators/gni/json/" + yearToDisplay,
                 dataType:"json",
                 async: false
             }).responseText;
